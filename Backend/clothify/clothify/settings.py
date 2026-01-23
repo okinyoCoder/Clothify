@@ -31,15 +31,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+
+    #local apps
     'products',
     'orders',
+    'carts',
+    'payments',
+
+    #Third-party apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +78,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'clothify.wsgi.application'
+
+# Custom user model
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 # Database
