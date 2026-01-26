@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 class Category(models.Model):
-    id = models.UUIDField( primary_key=True,default=uuid.uuid4, editable=False,)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
     name = models.CharField(max_length=30, unique=True)
     slug = models.SlugField(unique=True)
 
@@ -25,9 +25,10 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     
     class Meta:
-        ordering = ["created_at"]
+        ordering = ["-created_at"]
         indexes = [
             models.index(fields=["name"]),
             models.index(fields=["price"]),
